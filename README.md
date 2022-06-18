@@ -1,3 +1,7 @@
+
+## AUTHOR
+BETH NDUTA
+
 ## Nduts_neghborhood
 A Django web application that keeps you up to date on what's going on in your area. From handyman contact information to meeting notifications and even warnings, there's something for everyone.
 
@@ -56,8 +60,6 @@ env\Scripts\activate
 * HTML5
 * CSS3
 
-## AUTHOR
-BETH NDUTA
 
 ## LICENSE
 MIT License
