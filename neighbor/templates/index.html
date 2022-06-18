@@ -1,1 +1,10 @@
-<h1>good job</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+{% for post in posts %}
+    <h1>{{post.title}}</h1>
+    <h1>{{post.author}}</h1>
+    <h1>{{post.content}}</h1>
+    <h1>{{post.date_posted}}</h1>
+{% endfor %}
+{% endblock %}   
