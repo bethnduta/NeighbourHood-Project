@@ -6,7 +6,7 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView,  UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
@@ -57,7 +57,33 @@ class PostDetailView(DetailView):
     model = post
     template_name = 'detail.html'
 
-class PostCreateView(CreateView):
-    model = post
-    template_name = 'detail.html'    
-    
+def post_create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post=form.save(commit=False)
+            post.author=request.user
+            form.save()
+            return redirect('index')
+    else:
+        form = PostForm()
+    return render(request, 'post_form.html', {'form': form})
+
+
+class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
+    model=post
+    fields=['title','content']
+
+    def form_valid(self,form):
+        form.instance.author=self.request.user
+        return super().form_valid(form) 
+
+
+class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
+    model=post 
+    success_url='/'
+    def test_func(self):
+        post=self.get_object()
+        if self.request.user==post.author:
+            return True
+        return False
