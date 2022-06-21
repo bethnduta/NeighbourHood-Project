@@ -42,6 +42,15 @@ class NeighborHood(models.Model):
 
     def __str__(self):
         return self.name
+
+    class meta:
+        ordering = ['-pk']   
+
+    def create_neighborhood(self):
+        self.save()
+
+    def delete_neighborhood(self):
+        self.delete()        
   
 class Business(models.Model):
     name = models.CharField(max_length=100)
