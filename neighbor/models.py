@@ -25,5 +25,19 @@ class profile(models.Model):
         return f'{self.user.username} Profile' 
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk})      
+        return reverse('post-detail', kwargs={'pk': self.pk})  
+
+
+class NeighborHood(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    occupants = models.IntegerField(default=0)
+    description = models.TextField(default='')
+    admin= models.ForeignKey(User, on_delete=models.CASCADE)
+    police_number = models.IntegerField(default=0)
+    health_number = models.IntegerField(default=0)
+    image = models.ImageField(default='nt.jpg', upload_to='neighborhood_pics')
+
+    def __str__(self):
+        return self.name
   
