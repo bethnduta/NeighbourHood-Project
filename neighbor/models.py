@@ -51,7 +51,7 @@ class NeighborHood(models.Model):
 
     def update_neighborhood(self):
         self.update()
-        
+
     def update_occupants(self):
         self.occupants += 1
         self.save()
@@ -74,6 +74,24 @@ class Business(models.Model):
     email = models.EmailField(default='')
     NeighborHood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
+    class meta:
+        ordering = ['-pk']
+
+    def create_business(self):
+        self.save()
+
+    def update_business(self):
+        self.update()
+
+    def delete_business(self):
+        self.delete()
+
+    def find_business(self, id):
+        business = Business.objects.filter(id=id)
+        return business                     
 
 class user(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
