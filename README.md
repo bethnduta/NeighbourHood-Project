@@ -32,7 +32,7 @@ As a user I would like too:
 
 ## Installation and Running the App
 1. Clone GitHub repository
-git clone 
+git clone https://github.com/bethnduta/NeighbourHood-Project.git
 2. Cd into the folder jirani
 3. Create a virtual environment
 pip install virtualenv
