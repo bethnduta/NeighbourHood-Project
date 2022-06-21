@@ -49,6 +49,13 @@ class NeighborHood(models.Model):
     def create_neighborhood(self):
         self.save()
 
+    def update_neighborhood(self):
+        self.update()
+        
+    def update_occupants(self):
+        self.occupants += 1
+        self.save()
+
     def delete_neighborhood(self):
         self.delete() 
 
