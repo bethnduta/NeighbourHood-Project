@@ -29,4 +29,13 @@ class PostForm(forms.ModelForm):
         model=post
         fields=['title','content']
 
-       
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model=Business
+        fields=['name','location','occupants','description','admin','police_number','health_number']
+
+class neighborhoodForm(forms.ModelForm):
+    class Meta:
+        model=NeighborHood
+        fields=['name','location','occupants','description','admin','police_number','health_number']
