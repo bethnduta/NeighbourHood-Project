@@ -9,4 +9,5 @@ urlpatterns = [
     path('about/', views.neighbor, name='about'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('post/new/', views.post_create, name='post-create'),
+    path('search/',views.search,name='search1'),
 ]

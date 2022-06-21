@@ -88,3 +88,11 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
         if self.request.user==post.author:
             return True
         return False
+
+def search(request):
+    if request.method == "POST": 
+        searched = request.POST['searched']
+        post=post.objects.filter(title__icontains=searched).all()
+        return render(request,'search.html',{'post':post,'searched':searched})
+    else:
+         return render(request,'search.html')           

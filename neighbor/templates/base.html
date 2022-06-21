@@ -15,61 +15,67 @@
 <link rel="stylesheet" href="{% static 'index.css' %}" type="text/css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-light mb-4 bg-secondary bg-steel fixed-top">
-      <div class="container">
-        <a class="navbar-brand mr-4" href="/">NEIGHBORHOOD</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-          <!-- Navbar Right Side -->
-          <div class="navbar-nav">
-           
-            {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="{% url 'post-create' %}" class="btn btn-outline btn-sm">New post</a>
-          <a class="nav-item nav-link" href="{% url 'profile' %}" class="btn btn-outline btn-sm">Profile</a>
-            <a class="nav-item nav-link" href="{% url 'logout' %}" class="btn btn-outline btn-sm">Logout</a>
-        {% else %}
-            <a class="nav-item nav-link" href="{% url 'login' %}" class="btn btn-outline btn-sm">Login</a>
-            <a class="nav-item nav-link" href="{% url 'register' %}" class="btn btn-outline btn-sm">Register</a>
-            
-        {% endif %}
-          
-           
+  <div class="header">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark mb-4 bg-info bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">NEIGHBORHOOD</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+             
+              {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'post-create' %}" class="btn btn-outline btn-sm">New post</a>
+            <a class="nav-item nav-link" href="{% url 'profile' %}" class="btn btn-outline btn-sm">Profile</a>
+              <a class="nav-item nav-link" href="{% url 'logout' %}" class="btn btn-outline btn-sm">Logout</a>
+          {% else %}
+              <a class="nav-item nav-link" href="{% url 'login' %}" class="btn btn-outline btn-sm">Login</a>
+              <a class="nav-item nav-link" href="{% url 'register' %}" class="btn btn-outline btn-sm">Register</a>
+              
+          {% endif %}
+          <form class="form-inline my-2 my-lg-0" method=POST action="{% url 'search1' %}">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+             
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      
+    </header>
     
-  </header>
-  
-<main role="main" class="container">
-  <div class="row">
-    <div class="col-md-8">
-      {% if message %}
-      {% for message in messages %}
-      <div class="alert alert-{{message.tags}}">
-        {{ message }}
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {% if message %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
       </div>
-      {% endfor %}
-      {% endif %}
-      {% block content %}{% endblock %}
-    </div>
-    <div class="col-md-4">
-      <div class="content-section">
-        <h3>Our Sidebar</h3>
-        <p class='text-muted'>You can put any information here you'd like.
-          <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
-            <li class="list-group-item list-group-item-light">etc</li>
-          </ul>
-        </p>
+      <div class="col-md-4">
+        <div class="content-section">
+          <h3>Our Sidebar</h3>
+          <p class='text-muted'>You can put any information here you'd like.
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">Latest Posts</li>
+              <li class="list-group-item list-group-item-light">Neighborhoods</li>
+              <li class="list-group-item list-group-item-light">Calendars</li>
+              <li class="list-group-item list-group-item-light">etc</li>
+            </ul>
+          </p>
+        </div>
       </div>
     </div>
+  </main>
   </div>
-</main>
 
   
     <!-- jQuery library -->

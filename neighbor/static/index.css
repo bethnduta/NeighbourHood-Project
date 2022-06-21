@@ -1,3 +1,14 @@
-body{
-    background-color: blanchedalmond;
-}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, 'poppins';
+    box-sizing: border-box;
+  }
+  
+  .header {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    background-position: center;
+    background-size: cover;
+  }
