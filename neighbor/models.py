@@ -50,7 +50,12 @@ class NeighborHood(models.Model):
         self.save()
 
     def delete_neighborhood(self):
-        self.delete()        
+        self.delete() 
+
+    @classmethod
+    def find_neighborhood(cls, id):
+        neighborhood = cls.objects.filter(id=id)
+        return neighborhood 
   
 class Business(models.Model):
     name = models.CharField(max_length=100)
