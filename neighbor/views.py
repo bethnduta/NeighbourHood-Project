@@ -6,7 +6,7 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 
 # Create your views here.
@@ -22,11 +22,9 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
             
-        return redirect('/')
+            form.save()
+        return redirect('login')
         
     else:    
         form = UserRegisterForm()
@@ -58,4 +56,8 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = post
     template_name = 'detail.html'
+
+class PostCreateView(CreateView):
+    model = post
+    template_name = 'detail.html'    
     
