@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import post
 from .forms import UserRegisterForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -26,3 +27,7 @@ def register(request):
     else:    
         form = UserRegisterForm()
     return render(request,'register.html',{'form':form})
+
+@login_required
+def profile(request):
+    return render(request,'profile.html')

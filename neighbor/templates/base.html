@@ -18,16 +18,22 @@
   <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark mb-4 bg-dark bg-steel fixed-top">
       <div class="container">
-        <a class="navbar-brand mr-4" href="/">PROJECT SHARE</a>
+        <a class="navbar-brand mr-4" href="/">NEIGHBORHOOD</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
           <!-- Navbar Right Side -->
           <div class="navbar-nav">
            
-                <a class="nav-item nav-link" href="" class="btn btn-outline btn-sm">Login</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}" class="btn btn-outline btn-sm">Register</a>
-                
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="" class="btn btn-outline btn-sm">New post</a>
+          <a class="nav-item nav-link" href="{% url 'profile' %}" class="btn btn-outline btn-sm">Profile</a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}" class="btn btn-outline btn-sm">Logout</a>
+        {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}" class="btn btn-outline btn-sm">Login</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}" class="btn btn-outline btn-sm">Register</a>
+            
+        {% endif %}
           
            
           </div>

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+
 # Create your models here.
 class post(models.Model):
     title = models.CharField(max_length=100)
@@ -12,3 +13,11 @@ class post(models.Model):
 
     def __str__(self):
         return self.title
+
+class profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    bio = models.TextField(max_length=100, default='')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'        
