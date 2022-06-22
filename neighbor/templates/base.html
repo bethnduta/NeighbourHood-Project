@@ -35,7 +35,7 @@
               <a class="nav-item nav-link" href="{% url 'register' %}" class="btn btn-outline btn-sm">Register</a>
               
           {% endif %}
-          <form class="form-inline my-2 my-lg-0" method=POST action="{% url 'search1' %}">
+          <form class="form-inline my-2 my-lg-0" method=POST action="">
             {% csrf_token %}
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searched">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -67,7 +67,7 @@
             <ul class="list-group">
               <li class="list-group-item list-group-item-light">Latest Posts</li>
               <li class="list-group-item list-group-item-light">Neighborhoods</li>
-              <li class="list-group-item list-group-item-light">Calendars</li>
+              <li class="list-group-item list-group-item-light">Businesses</li>
               <li class="list-group-item list-group-item-light">etc</li>
             </ul>
           </p>

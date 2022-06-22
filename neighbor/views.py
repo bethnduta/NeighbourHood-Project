@@ -91,73 +91,75 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 
 
 
-@login_required
-def add_business(request):
-    if request.method == 'POST':
-        form = BusinessForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = BusinessForm()
-    return render(request,'business_form.html',{'form':form})
+# @login_required
+# def add_business(request):
+#     if request.method == 'POST':
+#         form = BusinessForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = BusinessForm()
+#     return render(request,'business_form.html',{'form':form})
 
-@login_required
-def neighborhood(request):
-    if request.method == 'POST':
-        form = NeighborhoodForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = NeighborhoodForm()
-    return render(request,'neighborhood_form.html',{'form':form})
+# @login_required
+# def neighborhood(request):
+#     if request.method == 'POST':
+#         form = NeighborhoodForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = NeighborhoodForm()
+#     return render(request,'neighborhood_form.html',{'form':form})
 
 
-def create_neighborhood(request):
-    if request.method == 'POST':
-        form = NeighborhoodForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = NeighborhoodForm()
-    return render(request,'neighborhood_form.html',{'form':form})
+# def create_neighborhood(request):
+#     if request.method == 'POST':
+#         form = NeighborhoodForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = NeighborhoodForm()
+#     return render(request,'neighborhood_form.html',{'form':form})
 
-@login_required
-def single_neighborhood(request,neighborhood_id):
-    neighborhood=Neighborhood.objects.get(id=neighborhood_id)
-    Business=Business.objects.filter(neighborhood=neighborhood)
-    posts=post.objects.filter(neighborhood=neighborhood)
-    if request.method == 'POST':
-        form = BusinessForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-        else:
-            form = BusinessForm()    
-    return render(request,'single_neighborhood.html',{'neighborhood':neighborhood})
+# @login_required
+# def single_neighborhood(request,neighborhood_id):
+#     neighborhood=Neighborhood.objects.get(id=neighborhood_id)
+#     Business=Business.objects.filter(neighborhood=neighborhood)
+#     posts=post.objects.filter(neighborhood=neighborhood)
+#     if request.method == 'POST':
+#         form = BusinessForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#         else:
+#             form = BusinessForm()    
+#     return render(request,'single_neighborhood.html',{'neighborhood':neighborhood})
 
-@login_required
-def join_neighborhood(request,neighborhood_id):
-    neighborhood=Neighborhood.objects.get(id=neighborhood_id)
-    request.user.profile.neighborhood.add(neighborhood)
-    request.user.profile.save()  
-    return render(request,'single_neighborhood.html',{'neighborhood':neighborhood})            
+# @login_required
+# def join_neighborhood(request,neighborhood_id):
+#     neighborhood=Neighborhood.objects.get(id=neighborhood_id)
+#     request.user.profile.neighborhood.add(neighborhood)
+#     request.user.profile.save()  
+#     return render(request,'single_neighborhood.html',{'neighborhood':neighborhood})            
 
-@login_required
-def leave_neighborhood(request,neighborhood_id):
-    neighborhood=Neighborhood.objects.get(id=neighborhood_id)
-    request.user.profile.neighborhood.remove(neighborhood)
-    request.user.profile.save()  
-    return render(request,'single_neighborhood.html',{'neighborhood':neighborhood})
+# @login_required
+# def leave_neighborhood(request,neighborhood_id):
+#     neighborhood=Neighborhood.objects.get(id=neighborhood_id)
+#     request.user.profile.neighborhood.remove(neighborhood)
+#     request.user.profile.save()  
+#     return render(request,'single_neighborhood.html',{'neighborhood':neighborhood})
 
-def search_business(request):
-    if request.method == 'POST':
-        form = SearchBusinessForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = SearchBusinessForm()
-    return render(request,'search_business.html',{'form':form})
+# def search_business(request):
+#     if request.method == 'POST':
+#         form = SearchBusinessForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = SearchBusinessForm()
+#     return render(request,'search_business.html',{'form':form})
+
+

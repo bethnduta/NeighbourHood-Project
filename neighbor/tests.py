@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import post, profile, NeighborHood, Business
+from .models import post, profile,  Business
 # Create your tests here.
                
 class BusinessTestClass(TestCase):

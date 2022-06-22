@@ -33,9 +33,9 @@ class PostForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model=Business
-        fields=['name','location','occupants','description','admin','police_number','health_number']
+        fields=['name','location','occupants','description']
 
 class neighborhoodForm(forms.ModelForm):
     class Meta:
         model=NeighborHood
-        fields=['name','location','occupants','description','admin','police_number','health_number']
+        fields=['name','location','occupants','description']
