@@ -30,10 +30,11 @@
               <a class="nav-item nav-link" href="{% url 'post-create' %}" class="btn btn-outline btn-sm">New post</a>
             <a class="nav-item nav-link" href="{% url 'profile' %}" class="btn btn-outline btn-sm">Profile</a>
               <a class="nav-item nav-link" href="{% url 'logout' %}" class="btn btn-outline btn-sm">Logout</a>
+              <a class="nav-item nav-link" href="https://jiraninduts.herokuapp.com/admin/login/?next=/admin/" class="btn btn-outline btn-sm">ADMINr</a>
           {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}" class="btn btn-outline btn-sm">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}" class="btn btn-outline btn-sm">Register</a>
-              
+              <a class="nav-item nav-link" href="https://jiraninduts.herokuapp.com/admin/login/?next=/admin/" class="btn btn-outline btn-sm">ADMIN</a>
           {% endif %}
           <form class="form-inline my-2 my-lg-0" method=POST action="">
             {% csrf_token %}
